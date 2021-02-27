@@ -1,0 +1,39 @@
+.nav {
+    background-color: lightskyblue;
+    grid-area: n;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+
+.nav__menu {
+    padding-top: 50px;
+}
+
+.nav__item {
+
+    margin-bottom: 50px;
+}
+
+.nav__item a {
+    color: #fff;
+}
+
+.nav__item a.active {
+    color: gold;
+}
+
+.nav__link {
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav__link:last-child {
+    margin-bottom: 0;
+}
+
+.nav__link:hover {
+    color: greenyellow;
+    text-decoration: underline;
+}

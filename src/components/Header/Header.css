@@ -1,0 +1,24 @@
+.header {
+    background-color: lightskyblue;
+    grid-area: h;
+    color: white;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo {
+    max-width: 100%;
+    width: 80px;
+    height: 80px;
+}
+.loginBlock {
+    margin-right: 20px;
+}
+.loginBlock a {
+    color: white;
+}
+.loginBlock a:hover {
+    color: gold;
+}
