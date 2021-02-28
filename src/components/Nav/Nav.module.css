@@ -7,33 +7,33 @@
     align-items: center;
 }
 
-.nav__menu {
+.navMenu {
     padding-top: 50px;
 }
 
-.nav__item {
+.navItem {
 
     margin-bottom: 50px;
 }
 
-.nav__item a {
+.navLink {
     color: #fff;
 }
 
-.nav__item a.active {
+.navLink.active {
     color: gold;
 }
 
-.nav__link {
+.navLink {
     text-decoration: none;
     color: #fff;
 }
 
-.nav__link:last-child {
+.navLink:last-child {
     margin-bottom: 0;
 }
 
-.nav__link:hover {
+.navLink:hover {
     color: greenyellow;
     text-decoration: underline;
 }

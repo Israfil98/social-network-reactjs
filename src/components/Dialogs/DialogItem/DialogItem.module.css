@@ -1,0 +1,12 @@
+.dialogItem {
+    padding: 15px;
+}
+
+.dialogItem a {
+    color: #000;
+}
+
+.dialogItem a.active {
+    color: gold;
+    font-weight: bold;
+}
