@@ -1,5 +1,5 @@
 .nav {
-    background-color: lightskyblue;
+    background-color: #1880d2;
     grid-area: n;
     display: flex;
     flex-direction: column;
@@ -16,24 +16,15 @@
     margin-bottom: 50px;
 }
 
-.navLink {
-    color: #fff;
-}
-
 .navLink.active {
-    color: gold;
+    color: #fff;
 }
 
 .navLink {
     text-decoration: none;
-    color: #fff;
+    color: #000;
 }
 
 .navLink:last-child {
     margin-bottom: 0;
-}
-
-.navLink:hover {
-    color: greenyellow;
-    text-decoration: underline;
 }

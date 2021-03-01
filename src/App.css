@@ -91,4 +91,6 @@ h6 {
 
 .app-wrapper-content {
     grid-area: m;
+    background-color: #fff;
+    box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.5);
 }
