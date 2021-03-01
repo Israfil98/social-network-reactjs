@@ -7,14 +7,14 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import {Route} from "react-router-dom"
 import Users from "./components/Users/Users";
 
-const App = () => {
+const App = (props) => {
     return (
         <div className="app-wrapper">
             <Header/>
             <Nav/>
             <div className="app-wrapper-content">
-                <Route path="/profile" render={() => <Profile/>}/>
-                <Route path="/dialogs" render={() => <Dialogs/>}/>
+                <Route path="/profile" render={() => <Profile profilePage={props.state.profilePage}/>}/>
+                <Route path="/dialogs" render={() => <Dialogs dialogsPage={props.state.dialogsPage}/>}/>
                 <Route path="/users" render={() => <Users/>}/>
             </div>
         </div>

@@ -13,7 +13,7 @@ const Post = (props) => {
             </div>
             <div className={s.btnWrapper}>
                 <button className={s.likeBtn}>Like</button>
-                likes {props.likesCount}
+                {props.likesCount}
             </div>
         </div>
     );
