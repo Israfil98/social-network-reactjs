@@ -11,19 +11,20 @@ const Dialogs = () => {
     ]
     const messagesData = [
         {id: 1, messageBody: "Hello"},
-        {id: 1, messageBody: "React is a nice Library"}
+        {id: 2, messageBody: "React is a nice Library"},
+        {id: 3, messageBody: "Method map is improves performance"}
     ]
+
+    const dialogs = dialogsData.map(d => <DialogItem id={d.id} name={d.name}/>)
+    const messages = messagesData.map(m => <Message messageBody={m.messageBody}/>)
 
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-               <DialogItem id={dialogsData[0].id} name={dialogsData[0].name}/>
-               <DialogItem id={dialogsData[1].id} name={dialogsData[1].name}/>
-               <DialogItem id={dialogsData[2].id} name={dialogsData[2].name}/>
+                {dialogs}
             </div>
             <div className={s.messages}>
-                <Message messageBody={messagesData[0].messageBody}/>
-                <Message messageBody={messagesData[1].messageBody}/>
+                {messages}
             </div>
         </div>
     );

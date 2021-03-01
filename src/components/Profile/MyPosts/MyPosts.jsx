@@ -5,8 +5,11 @@ import Post from "./Post/Post";
 const MyPosts = () => {
     const postsData = [
         {id: 1, postText: "Hi, im React Developer", likesCount: 1},
-        {id: 1, postText: "Im learning React a few month", likesCount: 2}
+        {id: 2, postText: "Im learning React a few month", likesCount: 2},
+        {id: 3, postText: "Method map!!!", likesCount: 5}
     ]
+
+    const posts = postsData.map(p => <Post postMessage={p.postText} likesCount={p.likesCount}/>)
 
     return (
         <div className={s.myPosts}>
@@ -16,8 +19,7 @@ const MyPosts = () => {
                 <button className={s.newPostBtn}>New Post</button>
             </div>
             <div className={s.posts}>
-                <Post postMessage={postsData[0].postText} likesCount={postsData[0].likesCount}/>
-                <Post postMessage={postsData[1].postText} likesCount={postsData[1].likesCount}/>
+                {posts}
             </div>
         </div>
     );
