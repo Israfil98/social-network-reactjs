@@ -1,4 +1,4 @@
-import {rerenderEntireTree} from "../../render";
+import {rerenderEntireTree} from "../../index";
 
 const state = {
     profilePage: {
@@ -6,7 +6,8 @@ const state = {
             {id: 1, postText: "Hi, im React Developer", likesCount: 1},
             {id: 2, postText: "Im learning React a few month", likesCount: 2},
             {id: 3, postText: "Method map!!!", likesCount: 5}
-        ]
+        ],
+        newPostText: ""
     },
     dialogsPage: {
         dialogsData: [
@@ -22,15 +23,20 @@ const state = {
     }
 }
 
-export const addPost = (newPostText) => {
+export const addPost = () => {
     const newPost = {
         id: 4,
-        postText: newPostText,
+        postText: state.profilePage.newPostText,
         likesCount: 0
     }
     state.profilePage.postsData.push(newPost)
+    state.profilePage.newPostText = ""
     rerenderEntireTree(state)
+}
 
+export const updatePostText = (newPostText) => {
+    state.profilePage.newPostText = newPostText
+    rerenderEntireTree(state)
 }
 
 
