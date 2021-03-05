@@ -4,7 +4,7 @@ import Header from "./components/Header/Header";
 import Nav from "./components/Nav/Nav";
 import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
-import {Route} from "react-router-dom"
+import { Route } from "react-router-dom"
 import Users from "./components/Users/Users";
 
 const App = (props) => {
@@ -13,11 +13,10 @@ const App = (props) => {
             <Header/>
             <Nav/>
             <div className="app-wrapper-content">
-                <Route path="/profile" render={() => <Profile profilePage={props.state.profilePage}
-                                                              addPost={props.addPost}
-                                                              updatePostText={props.updatePostText}/>}/>
-                <Route path="/dialogs" render={() => <Dialogs dialogsPage={props.state.dialogsPage}/>}/>
-                <Route path="/users" render={() => <Users/>}/>
+                <Route path="/profile" render={ () => <Profile profilePage={ props.state.profilePage }
+                                                               dispatch={ props.dispatch }/> } />
+                <Route path="/dialogs" render={ () => <Dialogs dialogsPage={ props.state.dialogsPage } /> } />
+                <Route path="/users" render={ () => <Users/> } />
             </div>
         </div>
     );
