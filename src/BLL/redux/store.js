@@ -1,7 +1,5 @@
-const ADD_POST = "ADD_POST"
-const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT"
-const SEND_MESSAGE = "SEND_MESSAGE"
-const UPDATE_NEW_MESSAGE_BODY_TEXT = "UPDATE_NEW_MESSAGE_BODY_TEXT"
+import { profileReducer } from "./profileReducer";
+import { dialogsReducer } from "./dialogsReducer";
 
 const store = {
     _state: {
@@ -39,59 +37,10 @@ const store = {
     },
 
     dispatch(action) {
-        if (action.type === ADD_POST) {
-            const newPost = {
-                id: 4,
-                postText: this._state.profilePage.newPostText,
-                likesCount: 0
-            }
-            this._state.profilePage.postsData.push(newPost)
-            this._state.profilePage.newPostText = ""
-            this._callSubscriber(this._state)
-        } else if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newPostText
-            this._callSubscriber(this._state)
-        } else if (action.type === UPDATE_NEW_MESSAGE_BODY_TEXT) {
-            this._state.dialogsPage.newMessageBodyText = action.newMessageBodyText
-            this._callSubscriber(this._state)
-        } else if (action.type === SEND_MESSAGE) {
-            const newMessage = {
-                id: 4,
-                messageBody: this._state.dialogsPage.newMessageBodyText
-            }
-            this._state.dialogsPage.messagesData.push(newMessage)
-            this._state.dialogsPage.newMessageBodyText = ""
-            this._callSubscriber(this._state)
-        }
+        this._state.profilePage = profileReducer(this._state.profilePage, action)
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action)
+        this._callSubscriber(this._state)
     }
-}
-
-export const addPostAC = () => {
-    const action = {
-        type: ADD_POST
-    }
-    return action
-}
-export const updateNewPostTextAC = (newPostText) => {
-    const action = {
-        type: UPDATE_NEW_POST_TEXT,
-        newPostText: newPostText
-    }
-    return action
-}
-
-export const sendMessageAC = () => {
-    const action = {
-        type: SEND_MESSAGE
-    }
-    return action
-}
-export const updateNewMessageBodyTextAC = (newMessageBodyText) => {
-    const action = {
-        type: UPDATE_NEW_MESSAGE_BODY_TEXT,
-        newMessageBodyText: newMessageBodyText
-    }
-    return action
 }
 
 export default store;

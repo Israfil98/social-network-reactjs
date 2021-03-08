@@ -1,7 +1,7 @@
 import React from 'react';
 import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
-import { addPostAC, updateNewPostTextAC } from "../../../BLL/redux/store";
+import { addPostAC, updateNewPostTextAC } from "../../../BLL/redux/profileReducer";
 
 const MyPosts = (props) => {
     const posts = props.postsData.map(p => <Post postMessage={ p.postText } likesCount={ p.likesCount }/>)
