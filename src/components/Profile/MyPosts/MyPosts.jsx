@@ -5,14 +5,14 @@ import { addPostAC, updateNewPostTextAC } from "../../../BLL/redux/store";
 
 const MyPosts = (props) => {
     const posts = props.postsData.map(p => <Post postMessage={ p.postText } likesCount={ p.likesCount }/>)
-    let newPostText = React.createRef()
+    const newPostTextValue = props.newPostText
 
     const newPostClickHandler = () => {
         props.dispatch(addPostAC())
     }
-    const onPostTextChangeHandler = () => {
-        const text = newPostText.current.value
-        props.dispatch(updateNewPostTextAC(text))
+    const onPostTextChangeHandler = (event) => {
+        const newPostTextValue = event.currentTarget.value
+        props.dispatch(updateNewPostTextAC(newPostTextValue))
     }
 
     return (
@@ -20,9 +20,9 @@ const MyPosts = (props) => {
             <h3 className={ s.myPostsTitle }>My posts</h3>
             <div className={ s.addPostContainer }>
                 <textarea className={ s.textarea }
-                          ref={ newPostText }
-                          value={ props.newPostText }
-                          onChange={ onPostTextChangeHandler }/>
+                          value={ newPostTextValue }
+                          onChange={ onPostTextChangeHandler }
+                          placeholder="What's happening?"/>
                 <button className={ s.newPostBtn }
                         onClick={ newPostClickHandler }>New Post
                 </button>
