@@ -2,20 +2,19 @@ import React from 'react';
 import s from "./Dialogs.module.css"
 import Message from "./Message/Message";
 import DialogItem from "./DialogItem/DialogItem";
-import { sendMessageAC, updateNewMessageBodyTextAC } from "../../BLL/redux/dialogsReducer";
 
 const Dialogs = (props) => {
-    const dialogs = props.dialogsPage.dialogsData.map(d => <DialogItem id={ d.id } name={ d.name }/>)
-    const messages = props.dialogsPage.messagesData.map(m => <Message messageBody={ m.messageBody }/>)
-    const newMessageBodyTextValue = props.dialogsPage.newMessageBodyText
+    const dialogs = props.dialogsData.map(d => <DialogItem id={ d.id } name={ d.name }/>)
+    const messages = props.messagesData.map(m => <Message messageBody={ m.messageBody }/>)
+    const newMessageBodyTextValue = props.newMessageBodyText
 
     const sendMessageClickHandler = () => {
-        props.dispatch(sendMessageAC())
+        props.sendMessage()
     }
 
     const onMessageBodyTextChangeHandler = (event) => {
         const newMessageBodyTextValue = event.currentTarget.value
-        props.dispatch(updateNewMessageBodyTextAC(newMessageBodyTextValue))
+        props.messageBodyTextChange(newMessageBodyTextValue)
     }
 
     return (

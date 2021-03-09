@@ -8,7 +8,7 @@ import { store } from "./BLL/redux/redux-store";
 export const rerenderEntireTree = (state) => {
     ReactDOM.render(
         <BrowserRouter>
-            <App state={ state } dispatch={ store.dispatch.bind(store) }/>
+            <App state={ state } store={ store }/>
         </BrowserRouter>,
         document.getElementById('root')
     );

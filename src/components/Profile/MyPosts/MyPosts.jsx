@@ -1,18 +1,17 @@
 import React from 'react';
 import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
-import { addPostAC, updateNewPostTextAC } from "../../../BLL/redux/profileReducer";
 
 const MyPosts = (props) => {
     const posts = props.postsData.map(p => <Post postMessage={ p.postText } likesCount={ p.likesCount }/>)
     const newPostTextValue = props.newPostText
 
     const newPostClickHandler = () => {
-        props.dispatch(addPostAC())
+        props.addNewPost()
     }
     const onPostTextChangeHandler = (event) => {
         const newPostTextValue = event.currentTarget.value
-        props.dispatch(updateNewPostTextAC(newPostTextValue))
+        props.postTextChange(newPostTextValue)
     }
 
     return (
