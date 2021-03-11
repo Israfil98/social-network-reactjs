@@ -1,25 +1,27 @@
-import React from 'react';
+import { connect } from "react-redux";
+
 import Dialogs from "./Dialogs";
 import { sendMessageAC, updateNewMessageBodyTextAC } from "../../BLL/redux/dialogsReducer";
 
-const DialogsContainer = (props) => {
-    const state = props.store.getState()
-
-    const sendMessage = () => {
-        props.store.dispatch(sendMessageAC())
+const mapStateToProps = (state) => {
+    return {
+        dialogsData: state.dialogsPage.dialogsData,
+        messagesData: state.dialogsPage.messagesData,
+        newMessageBodyText: state.dialogsPage.newMessageBodyText,
     }
+}
 
-    const messageBodyTextChange = (newMessageBodyTextValue) => {
-        props.store.dispatch(updateNewMessageBodyTextAC(newMessageBodyTextValue))
+const mapDispatchToProps = (dispatch) => {
+    return {
+        sendMessage: () => {
+            dispatch(sendMessageAC())
+        },
+        messageBodyTextChange: (newMessageBodyTextValue) => {
+            dispatch(updateNewMessageBodyTextAC(newMessageBodyTextValue))
+        }
     }
+}
 
-    return (
-        <Dialogs dialogsData={ state.dialogsPage.dialogsData }
-                 messagesData={ state.dialogsPage.messagesData }
-                 newMessageBodyText={ state.dialogsPage.newMessageBodyText }
-                 sendMessage={ sendMessage }
-                 messageBodyTextChange={ messageBodyTextChange }/>
-    );
-};
+const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
 export default DialogsContainer;
