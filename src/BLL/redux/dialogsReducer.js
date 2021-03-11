@@ -22,13 +22,15 @@ export const dialogsReducer = (state = initialState, action) => {
                 id: 4,
                 messageBody: state.newMessageBodyText
             }
-            state.messagesData.push(newMessage)
-            state.newMessageBodyText = ""
-            return state
+            const stateCopy = {...state, messagesData: [...state.messagesData]}
+            stateCopy.messagesData.push(newMessage)
+            stateCopy.newMessageBodyText = ""
+            return stateCopy
         }
         case UPDATE_NEW_MESSAGE_BODY_TEXT: {
-            state.newMessageBodyText = action.newMessageBodyText
-            return state
+            const stateCopy = {...state}
+            stateCopy.newMessageBodyText = action.newMessageBodyText
+            return stateCopy
         }
         default: {
             return state

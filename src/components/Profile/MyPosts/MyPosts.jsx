@@ -5,7 +5,7 @@ import s from "./MyPosts.module.css"
 import Post from "./Post/Post";
 
 const MyPosts = (props) => {
-    const posts = props.postsData.map(p => <Post postMessage={ p.postText } likesCount={ p.likesCount }/>)
+    const posts = props.postsData.map(p => <Post postMessage={ p.postText } likesCount={ p.likesCount } key={ p.id } />)
     const newPostTextValue = props.newPostText
 
     const newPostClickHandler = () => {

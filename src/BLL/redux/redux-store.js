@@ -9,3 +9,5 @@ const stateFromReducers = combineReducers({
 })
 
 export const store = createStore(stateFromReducers)
+
+window.store = store;

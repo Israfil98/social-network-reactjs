@@ -9,19 +9,12 @@ import App from './App';
 import { store } from "./BLL/redux/redux-store";
 
 
-export const rerenderEntireTree = () => {
-    ReactDOM.render(
-        <BrowserRouter>
-            <Provider store={ store }>
-                <App />
-            </Provider>
-        </BrowserRouter>,
-        document.getElementById('root')
-    );
-};
+ReactDOM.render(
+    <BrowserRouter>
+        <Provider store={ store }>
+            <App />
+        </Provider>
+    </BrowserRouter>,
+    document.getElementById('root')
+)
 
-rerenderEntireTree()
-
-store.subscribe(() => {
-    rerenderEntireTree()
-})
