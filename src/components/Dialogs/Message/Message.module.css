@@ -4,4 +4,9 @@
     min-height: 50px;
     box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.5);
     padding: 10px;
+    margin-bottom: 10px;
+}
+
+.message:last-child {
+    margin-bottom: 0;
 }
