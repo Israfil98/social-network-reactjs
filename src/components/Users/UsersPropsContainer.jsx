@@ -1,7 +1,14 @@
 import { connect } from 'react-redux';
 
 import UsersAPIContainer from './UsersAPIContainer';
-import { followAC, setCurrentPageAC, setTotalUsersCountAC, setUsersAC, unfollowAC } from '../../BLL/redux/usersReducer';
+import {
+    followAC,
+    setCurrentPageAC,
+    setFetchingAC,
+    setTotalUsersCountAC,
+    setUsersAC,
+    unfollowAC
+} from '../../BLL/redux/usersReducer';
 
 const mapStateToProps = (state) => {
     return {
@@ -9,6 +16,7 @@ const mapStateToProps = (state) => {
         pageSize: state.usersPage.pageSize,
         totalUsersCount: state.usersPage.totalUsersCount,
         usersData: state.usersPage.usersData,
+        isFetching: state.usersPage.isFetching,
 
     }
 }
@@ -29,6 +37,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         setUsers: (usersData) => {
             dispatch(setUsersAC(usersData))
+        },
+        setFetching: (isFetching) => {
+            dispatch(setFetchingAC(isFetching))
         },
 
     }
