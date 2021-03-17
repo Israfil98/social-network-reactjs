@@ -7,7 +7,7 @@ import Header from './components/Header/Header';
 import Nav from './components/Nav/Nav';
 import Profile from './components/Profile/Profile';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
-import { UsersContainer } from './components/Users/UsersContainer';
+import { UsersPropsContainer } from './components/Users/UsersPropsContainer';
 
 const App = () => {
     return (
@@ -17,7 +17,7 @@ const App = () => {
             <div className='app-wrapper-content'>
                 <Route path='/profile' render={ () => <Profile /> } />
                 <Route path='/dialogs' render={ () => <DialogsContainer /> } />
-                <Route path='/users' render={ () => <UsersContainer /> } />
+                <Route path='/users' render={ () => <UsersPropsContainer /> } />
             </div>
         </div>
     );
