@@ -1,17 +1,19 @@
-const SET_USERS = "SET_USERS"
 const FOLLOW = "FOLLOW"
 const UNFOLLOW = "UNFOLLOW"
+const SET_CURRENT_PAGE = "SET_CURRENT_PAGE"
+const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT"
+const SET_USERS = "SET_USERS"
 
 const initialState = {
+    currentPage: 1,
+    pageSize: 10,
+    totalUsersCount: 0,
     usersData: [],
+
 }
 
 export const usersReducer = (state = initialState, action) => {
     switch (action.type) {
-        case SET_USERS: {
-            const stateCopy = {...state, usersData: [...state.usersData, ...action.usersData]}
-            return stateCopy
-        }
         case FOLLOW: {
             const copyState = {
                 ...state,
@@ -38,18 +40,22 @@ export const usersReducer = (state = initialState, action) => {
             }
             return copyState
         }
+        case SET_USERS: {
+            const stateCopy = {...state, usersData: action.usersData}
+            return stateCopy
+        }
+        case SET_CURRENT_PAGE: {
+            const stateCopy = {...state, currentPage: action.currentPage}
+            return stateCopy
+        }
+        case SET_TOTAL_USERS_COUNT: {
+            const stateCopy = {...state, totalUsersCount: action.totalCount}
+            return stateCopy
+        }
         default: {
             return state
         }
     }
-}
-
-export const setUsersAC = (usersData) => {
-    const action = {
-        type: SET_USERS,
-        usersData: usersData,
-    }
-    return action
 }
 
 export const followAC = (userId) => {
@@ -59,11 +65,31 @@ export const followAC = (userId) => {
     }
     return action
 }
-
 export const unfollowAC = (userId) => {
     const action = {
         type: UNFOLLOW,
         userId: userId,
+    }
+    return action
+}
+export const setCurrentPageAC = (currentPage) => {
+    const action = {
+        type: SET_CURRENT_PAGE,
+        currentPage: currentPage,
+    }
+    return action
+}
+export const setTotalUsersCountAC = (totalCount) => {
+    const action = {
+        type: SET_TOTAL_USERS_COUNT,
+        totalCount: totalCount,
+    }
+    return action
+}
+export const setUsersAC = (usersData) => {
+    const action = {
+        type: SET_USERS,
+        usersData: usersData,
     }
     return action
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import s from "./MyPosts.module.css"
+import s from './MyPosts.module.css'
 
-import Post from "./Post/Post";
+import Post from './Post/Post';
 
 const MyPosts = (props) => {
     const posts = props.postsData.map(p => <Post postMessage={ p.postText } likesCount={ p.likesCount } key={ p.id } />)
@@ -23,7 +23,7 @@ const MyPosts = (props) => {
                 <textarea className={ s.textarea }
                           value={ newPostTextValue }
                           onChange={ onPostTextChangeHandler }
-                          placeholder="What's happening?"/>
+                          placeholder='What happening?'/>
                 <button className={ s.newPostBtn }
                         onClick={ newPostClickHandler }>New Post
                 </button>

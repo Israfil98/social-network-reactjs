@@ -1,7 +1,7 @@
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
-import MyPosts from "./MyPosts";
-import { addPostAC, updateNewPostTextAC } from "../../../BLL/redux/profileReducer";
+import MyPosts from './MyPosts';
+import { addPostAC, updateNewPostTextAC } from '../../../BLL/redux/profileReducer';
 
 const mapStateToProps = (state) => {
     return {

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import s from "./Dialogs.module.css"
+import s from './Dialogs.module.css'
 
-import Message from "./Message/Message";
-import DialogItem from "./DialogItem/DialogItem";
+import Message from './Message/Message';
+import DialogItem from './DialogItem/DialogItem';
 
 const Dialogs = (props) => {
     const dialogs = props.dialogsData.map(d => <DialogItem id={ d.id } name={ d.name } key={ d.id } />)
@@ -30,7 +30,7 @@ const Dialogs = (props) => {
                 </div>
                 <div className={ s.sendMessageContainer }>
                     <textarea className={ s.textarea }
-                              placeholder="Start a new message"
+                              placeholder='Start a new message'
                               value={ newMessageBodyTextValue }
                               onChange={ onMessageBodyTextChangeHandler }/>
                     <button className={ s.sendMessageBtn } onClick={ sendMessageClickHandler }>Send</button>

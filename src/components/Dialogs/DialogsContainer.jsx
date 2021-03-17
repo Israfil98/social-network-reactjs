@@ -1,7 +1,7 @@
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
-import Dialogs from "./Dialogs";
-import { sendMessageAC, updateNewMessageBodyTextAC } from "../../BLL/redux/dialogsReducer";
+import Dialogs from './Dialogs';
+import { sendMessageAC, updateNewMessageBodyTextAC } from '../../BLL/redux/dialogsReducer';
 
 const mapStateToProps = (state) => {
     return {

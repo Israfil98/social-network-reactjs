@@ -1,14 +1,24 @@
 import React from 'react';
-import axios from "axios";
+import axios from 'axios';
 
-import s from "./Users.module.css";
+import s from './Users.module.css';
 
-import userPhoto from "../../assets/img/user.png";
+import userPhoto from '../../assets/img/user.png';
 
 class Users extends React.Component {
     componentDidMount() {
         axios
-            .get("https://social-network.samuraijs.com/api/1.0/users")
+            .get(`https://social-network.samuraijs.com/api/1.0/users?page=${ this.props.currentPage }&count=${ this.props.pageSize }`)
+            .then((response) => {
+                this.props.setUsers(response.data.items)
+                this.props.setTotalUsersCount(response.data.totalCount)
+            })
+    }
+
+    onPageChangeHandler = (page) => {
+        this.props.setCurrentPage(page)
+        axios
+            .get(`https://social-network.samuraijs.com/api/1.0/users?page=${ page }&count=${ this.props.pageSize }`)
             .then((response) => {
                 this.props.setUsers(response.data.items)
             })
@@ -22,7 +32,7 @@ class Users extends React.Component {
                         <div className={ s.userAbout }>
                             <img className={ s.userPhoto }
                                  src={ user.photos.small != null ? user.photos.small : userPhoto }
-                                 alt=""
+                                 alt=''
                             />
                             <div className={ s.description }>
                                 <h1 className={ s.userName }>{ user.name }</h1>
@@ -48,8 +58,28 @@ class Users extends React.Component {
                 </div>
             )
         })
+
+        const pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize)
+
+        let pages = []
+        for (let i = 1; i <= pagesCount; i++) {
+            pages.push(i)
+        }
+
         return (
-            <div>{ users }</div>
+            <div className={ s.container }>
+                <div className={ s.pagination }>
+                    { pages.map((page) => {
+                        return (
+                            <span
+                                className={ this.props.currentPage === page ? s.selectedPage : "" }
+                                onClick={ () => this.onPageChangeHandler(page) }
+                            >{ page }</span>
+                        )
+                    }) }
+                </div>
+                <div>{ users }</div>
+            </div>
         );
     }
 
