@@ -15,10 +15,12 @@
 }
 .loginBlock {
     margin-right: 20px;
+    text-transform: uppercase;
+    color: #000;
 }
 .loginBlock a {
-    color: white;
+    color: #000;
 }
 .loginBlock a:hover {
-    color: gold;
+    color: #fff;
 }
