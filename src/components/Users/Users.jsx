@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from "react-router-dom";
 
 import s from "./Users.module.css";
 
@@ -10,10 +11,12 @@ const Users = (props) => {
             <div className={ s.users }>
                 <div key={ user.id } className={ s.userItem }>
                     <div className={ s.userAbout }>
-                        <img className={ s.userPhoto }
-                             src={ user.photos.small != null ? user.photos.small : userPhoto }
-                             alt=''
-                        />
+                        <NavLink to={"/profile/" + user.id}>
+                            <img className={ s.userPhoto }
+                                 src={ user.photos.small != null ? user.photos.small : userPhoto }
+                                 alt=''
+                            />
+                        </NavLink>
                         <div className={ s.description }>
                             <h1 className={ s.userName }>{ user.name }</h1>
                             <div className={ s.status }>{ user.status }</div>

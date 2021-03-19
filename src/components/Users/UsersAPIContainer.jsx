@@ -30,7 +30,7 @@ class UsersAPIContainer extends React.Component {
     render() {
         return (
             <div>
-                { this.props.isFetching ? <CircularProgress/> : null }
+                { this.props.isFetching ? <CircularProgress /> : null }
                 <Users
                     currentPage={this.props.currentPage}
                     pageSize={this.props.pageSize}

@@ -16,3 +16,24 @@
 .descriptionBlock {
 
 }
+
+.userPhoto {
+
+}
+
+.aboutUser {
+    display: flex;
+    flex-direction: column;
+}
+
+.fullName {
+
+}
+
+.about {
+
+}
+
+.contacts {
+
+}
