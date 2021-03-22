@@ -8,7 +8,7 @@ class UsersAPIContainer extends React.Component {
     componentDidMount() {
         this.props.setFetching(true)
         usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-            .then((data) => {
+            .then(data => {
                 this.props.setFetching(false)
                 this.props.setUsers(data.items)
                 this.props.setTotalUsersCount(data.totalCount)
@@ -19,7 +19,7 @@ class UsersAPIContainer extends React.Component {
         this.props.setFetching(true)
         this.props.setCurrentPage(page)
         usersAPI.getUsers(page, this.props.pageSize)
-            .then((data) => {
+            .then(data => {
                 this.props.setFetching(false)
                 this.props.setUsers(data.items)
             })
