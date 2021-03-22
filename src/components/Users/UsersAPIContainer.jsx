@@ -1,45 +1,43 @@
 import React from 'react';
-import axios from 'axios';
 
 import Users from './Users';
 import { CircularProgress } from '@material-ui/core';
+import { usersAPI } from "../../DAL/axios/api";
 
 class UsersAPIContainer extends React.Component {
     componentDidMount() {
         this.props.setFetching(true)
-        axios
-            .get(`https://social-network.samuraijs.com/api/1.0/users?page=${ this.props.currentPage }&count=${ this.props.pageSize }`)
-            .then((response) => {
+        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
+            .then((data) => {
                 this.props.setFetching(false)
-                this.props.setUsers(response.data.items)
-                this.props.setTotalUsersCount(response.data.totalCount)
+                this.props.setUsers(data.items)
+                this.props.setTotalUsersCount(data.totalCount)
             })
     }
 
     onPageChangeHandler = (page) => {
         this.props.setFetching(true)
         this.props.setCurrentPage(page)
-        axios
-            .get(`https://social-network.samuraijs.com/api/1.0/users?page=${ page }&count=${ this.props.pageSize }`)
-            .then((response) => {
+        usersAPI.getUsers(page, this.props.pageSize)
+            .then((data) => {
                 this.props.setFetching(false)
-                this.props.setUsers(response.data.items)
+                this.props.setUsers(data.items)
             })
     }
 
     render() {
         return (
             <div>
-                { this.props.isFetching ? <CircularProgress /> : null }
+                { this.props.isFetching ? <CircularProgress/> : null }
                 <Users
-                    currentPage={this.props.currentPage}
-                    pageSize={this.props.pageSize}
-                    totalUsersCount={this.props.totalUsersCount}
-                    usersData={this.props.usersData}
+                    currentPage={ this.props.currentPage }
+                    pageSize={ this.props.pageSize }
+                    totalUsersCount={ this.props.totalUsersCount }
+                    usersData={ this.props.usersData }
 
-                    follow={this.props.follow}
-                    unfollow={this.props.unfollow}
-                    onPageChangeHandler={this.onPageChangeHandler}
+                    follow={ this.props.follow }
+                    unfollow={ this.props.unfollow }
+                    onPageChangeHandler={ this.onPageChangeHandler }
                 />
             </div>
         );
