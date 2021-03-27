@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 
-import HeaderAPIContainer from "./HeaderAPIContainer";
-import { setUserDataAC } from "../../BLL/redux/authReducer";
+import { getAuthUserDataTC } from '../../BLL/redux/authReducer';
+
+import HeaderAPIContainer from './HeaderAPIContainer';
 
 const mapStateToProps = (state) => {
     return {
@@ -13,8 +14,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setUserData: (userId, login, email) => {
-            dispatch(setUserDataAC(userId, login, email))
+        getAuthUserData: () => {
+            dispatch(getAuthUserDataTC())
         },
 
     }

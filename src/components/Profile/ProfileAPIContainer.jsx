@@ -1,5 +1,4 @@
 import React from 'react';
-import axios from 'axios';
 
 import Profile from "./Profile";
 
@@ -11,11 +10,7 @@ class ProfileAPIContainer extends React.Component {
             userId = 13765
         }
 
-        axios
-            .get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-            .then((response) => {
-                this.props.setUserProfile(response.data)
-            })
+        this.props.getUserProfile(userId)
     }
 
     render() {

@@ -17,11 +17,23 @@ export const usersAPI = {
             })
     },
     follow(userId) {
-       return instance
+        return instance
             .post(`follow/${ userId }`)
     },
     unfollow(userId) {
         return instance
             .delete(`follow/${ userId }`)
+    },
+}
+export const profileAPI = {
+    getProfile(userId) {
+        return instance
+            .get(`profile/${ userId }`)
+    },
+}
+export const authAPI = {
+    getMe() {
+        return instance
+            .get(`auth/me`)
     },
 }

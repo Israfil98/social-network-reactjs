@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
+import { withRouter } from "react-router-dom";
 
-import { setUserProfileAC } from "../../BLL/redux/profileReducer";
+import { getUserProfileTC } from "../../BLL/redux/profileReducer";
 
 import ProfileAPIContainer from "./ProfileAPIContainer";
-import { withRouter } from "react-router-dom";
 
 const mapStateToProps = (state) => {
     return {
@@ -14,8 +14,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        setUserProfile: (profile) => {
-            dispatch(setUserProfileAC(profile))
+        getUserProfile: (userId) => {
+            dispatch(getUserProfileTC(userId))
         },
 
     }
