@@ -2,27 +2,14 @@ import React from 'react';
 
 import Users from './Users';
 import { CircularProgress } from '@material-ui/core';
-import { usersAPI } from "../../DAL/axios/api";
 
 class UsersAPIContainer extends React.Component {
     componentDidMount() {
-        this.props.setFetching(true)
-        usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-            .then(data => {
-                this.props.setFetching(false)
-                this.props.setUsers(data.items)
-                this.props.setTotalUsersCount(data.totalCount)
-            })
+        this.props.getUsers(this.props.currentPage, this.props.pageSize)
     }
 
     onPageChangeHandler = (page) => {
-        this.props.setFetching(true)
-        this.props.setCurrentPage(page)
-        usersAPI.getUsers(page, this.props.pageSize)
-            .then(data => {
-                this.props.setFetching(false)
-                this.props.setUsers(data.items)
-            })
+        this.props.getUsers(page, this.props.pageSize)
     }
 
     render() {
@@ -34,6 +21,7 @@ class UsersAPIContainer extends React.Component {
                     pageSize={ this.props.pageSize }
                     totalUsersCount={ this.props.totalUsersCount }
                     usersData={ this.props.usersData }
+                    isFollowingProgress={ this.props.isFollowingProgress }
 
                     follow={ this.props.follow }
                     unfollow={ this.props.unfollow }
@@ -42,7 +30,6 @@ class UsersAPIContainer extends React.Component {
             </div>
         );
     }
-
 }
 
 export default UsersAPIContainer;

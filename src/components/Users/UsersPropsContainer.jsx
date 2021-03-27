@@ -1,14 +1,7 @@
 import { connect } from 'react-redux';
 
 import UsersAPIContainer from './UsersAPIContainer';
-import {
-    followAC,
-    setCurrentPageAC,
-    setFetchingAC,
-    setTotalUsersCountAC,
-    setUsersAC,
-    unfollowAC
-} from '../../BLL/redux/usersReducer';
+import { followTC, getUsersTC, unfollowTC } from '../../BLL/redux/usersReducer';
 
 const mapStateToProps = (state) => {
     return {
@@ -17,6 +10,7 @@ const mapStateToProps = (state) => {
         totalUsersCount: state.usersPage.totalUsersCount,
         usersData: state.usersPage.usersData,
         isFetching: state.usersPage.isFetching,
+        isFollowingProgress: state.usersPage.isFollowingProgress,
 
     }
 }
@@ -24,22 +18,13 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         follow: (userId) => {
-            dispatch(followAC(userId))
+            dispatch(followTC(userId))
         },
         unfollow: (userId) => {
-            dispatch(unfollowAC(userId))
+            dispatch(unfollowTC(userId))
         },
-        setCurrentPage: (currentPage) => {
-            dispatch(setCurrentPageAC(currentPage))
-        },
-        setTotalUsersCount: (totalCount) => {
-            dispatch(setTotalUsersCountAC(totalCount))
-        },
-        setUsers: (usersData) => {
-            dispatch(setUsersAC(usersData))
-        },
-        setFetching: (isFetching) => {
-            dispatch(setFetchingAC(isFetching))
+        getUsers: (currentPage, pageSize) => {
+            dispatch(getUsersTC(currentPage, pageSize))
         },
 
     }

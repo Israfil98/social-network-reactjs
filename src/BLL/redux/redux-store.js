@@ -1,4 +1,5 @@
-import { combineReducers, createStore } from 'redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import thunkMiddleware from 'redux-thunk';
 
 import { profileReducer } from './profileReducer';
 import { dialogsReducer } from './dialogsReducer';
@@ -13,6 +14,6 @@ const stateFromReducers = combineReducers({
 
 })
 
-export const store = createStore(stateFromReducers)
+export const store = createStore(stateFromReducers, applyMiddleware(thunkMiddleware))
 
 window.store = store;
