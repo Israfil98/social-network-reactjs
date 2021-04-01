@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom'
 
 import s from './Dialogs.module.css'
 
@@ -6,8 +7,8 @@ import Message from './Message/Message';
 import DialogItem from './DialogItem/DialogItem';
 
 const Dialogs = (props) => {
-    const dialogs = props.dialogsData.map(d => <DialogItem id={ d.id } name={ d.name } key={ d.id } />)
-    const messages = props.messagesData.map(m => <Message messageBody={ m.messageBody } key={ m.id } />)
+    const dialogs = props.dialogsData.map(d => <DialogItem id={ d.id } name={ d.name } key={ d.id }/>)
+    const messages = props.messagesData.map(m => <Message messageBody={ m.messageBody } key={ m.id }/>)
     const newMessageBodyTextValue = props.newMessageBodyText
 
     const sendMessageClickHandler = () => {
@@ -17,6 +18,10 @@ const Dialogs = (props) => {
     const onMessageBodyTextChangeHandler = (event) => {
         const newMessageBodyTextValue = event.currentTarget.value
         props.messageBodyTextChange(newMessageBodyTextValue)
+    }
+
+    if (props.isAuth === false) {
+        return <Redirect to='/login'/>
     }
 
     return (

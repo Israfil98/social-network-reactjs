@@ -8,6 +8,7 @@ import ProfileAPIContainer from "./ProfileAPIContainer";
 const mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
+        isAuth: state.auth.isAuth,
 
     }
 }

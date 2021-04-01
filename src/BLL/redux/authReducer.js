@@ -1,5 +1,4 @@
-import { authAPI, profileAPI } from "../../DAL/axios/api";
-import { setUserProfileAC } from "./profileReducer";
+import { authAPI } from "../../DAL/axios/api";
 
 const SET_USER_DATA = "SET_USER_DATA"
 

@@ -11,6 +11,7 @@ const mapStateToProps = (state) => {
         usersData: state.usersPage.usersData,
         isFetching: state.usersPage.isFetching,
         isFollowingProgress: state.usersPage.isFollowingProgress,
+        isAuth: state.auth.isAuth,
 
     }
 }

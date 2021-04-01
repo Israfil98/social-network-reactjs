@@ -8,6 +8,8 @@ const mapStateToProps = (state) => {
         dialogsData: state.dialogsPage.dialogsData,
         messagesData: state.dialogsPage.messagesData,
         newMessageBodyText: state.dialogsPage.newMessageBodyText,
+        isAuth: state.auth.isAuth,
+
     }
 }
 
@@ -22,6 +24,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
+const DialogsPropsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
 
-export default DialogsContainer;
+export default DialogsPropsContainer;
