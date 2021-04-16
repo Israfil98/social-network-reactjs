@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom'
 
 import s from './Dialogs.module.css'
 
@@ -18,10 +17,6 @@ const Dialogs = (props) => {
     const onMessageBodyTextChangeHandler = (event) => {
         const newMessageBodyTextValue = event.currentTarget.value
         props.messageBodyTextChange(newMessageBodyTextValue)
-    }
-
-    if (props.isAuth === false) {
-        return <Redirect to='/login'/>
     }
 
     return (

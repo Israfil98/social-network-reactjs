@@ -10,7 +10,6 @@ import { UsersPropsContainer } from './components/Users/UsersPropsContainer';
 import { ProfilePropsContainer } from "./components/Profile/ProfilePropsContainer";
 import Login from "./components/Login/Login";
 
-
 const App = () => {
     return (
         <div className='app-wrapper'>

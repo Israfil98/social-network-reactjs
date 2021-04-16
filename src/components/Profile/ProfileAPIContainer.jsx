@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
 
 import Profile from './Profile';
 
@@ -12,18 +11,18 @@ class ProfileAPIContainer extends React.Component {
         }
 
         this.props.getUserProfile(userId)
+        this.props.getUserStatus(userId)
     }
 
     render() {
-        if (this.props.isAuth === false) {
-            return <Redirect to='/login'/>
-        }
-
         return (
-            <Profile { ...this.props } profile={ this.props.profile } />
+            <Profile { ...this.props }
+                     profile={ this.props.profile }
+                     status={ this.props.status }
+                     updateUserStatus={ this.props.updateUserStatus }
+            />
         );
     }
-
 }
 
 export default ProfileAPIContainer;

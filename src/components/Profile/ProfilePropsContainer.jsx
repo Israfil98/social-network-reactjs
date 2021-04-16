@@ -1,14 +1,15 @@
 import { connect } from 'react-redux';
 import { withRouter } from "react-router-dom";
+import { compose } from "redux";
 
-import { getUserProfileTC } from "../../BLL/redux/profileReducer";
-
+import { getUserProfileTC, getUserStatusTC, updateUserStatusTC } from "../../BLL/redux/profileReducer";
 import ProfileAPIContainer from "./ProfileAPIContainer";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
 const mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
-        isAuth: state.auth.isAuth,
+        status: state.profilePage.status,
 
     }
 }
@@ -18,10 +19,17 @@ const mapDispatchToProps = (dispatch) => {
         getUserProfile: (userId) => {
             dispatch(getUserProfileTC(userId))
         },
+        getUserStatus: (userId) => {
+            dispatch(getUserStatusTC(userId))
+        },
+        updateUserStatus: (status) => {
+            dispatch(updateUserStatusTC(status))
+        },
 
     }
 }
-
-const WithURLProfileContainer = withRouter(ProfileAPIContainer)
-
-export const ProfilePropsContainer = connect(mapStateToProps, mapDispatchToProps)(WithURLProfileContainer);
+export const ProfilePropsContainer = compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    withRouter,
+    withAuthRedirect
+)(ProfileAPIContainer)

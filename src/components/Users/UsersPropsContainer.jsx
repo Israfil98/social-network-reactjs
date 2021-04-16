@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
+import { compose } from "redux";
 
 import UsersAPIContainer from './UsersAPIContainer';
 import { followTC, getUsersTC, unfollowTC } from '../../BLL/redux/usersReducer';
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
 const mapStateToProps = (state) => {
     return {
@@ -11,8 +13,6 @@ const mapStateToProps = (state) => {
         usersData: state.usersPage.usersData,
         isFetching: state.usersPage.isFetching,
         isFollowingProgress: state.usersPage.isFollowingProgress,
-        isAuth: state.auth.isAuth,
-
     }
 }
 
@@ -31,4 +31,7 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export const UsersPropsContainer = connect(mapStateToProps, mapDispatchToProps)(UsersAPIContainer);
+export const UsersPropsContainer = compose(
+    connect(mapStateToProps, mapDispatchToProps),
+    withAuthRedirect
+)(UsersAPIContainer)

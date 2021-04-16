@@ -3,6 +3,7 @@ import { profileAPI } from "../../DAL/axios/api";
 const ADD_POST = "ADD_POST"
 const UPDATE_NEW_POST_TEXT = "UPDATE_NEW_POST_TEXT"
 const SET_USER_PROFILE = "SET_USER_PROFILE"
+const SET_STATUS = "SET_STATUS"
 
 const initialState = {
     postsData: [
@@ -12,6 +13,7 @@ const initialState = {
     ],
     newPostText: "",
     profile: null,
+    status: '',
 
 }
 
@@ -35,6 +37,10 @@ export const profileReducer = (state = initialState, action) => {
         }
         case SET_USER_PROFILE: {
             const stateCopy = {...state, profile: action.profile}
+            return stateCopy
+        }
+        case SET_STATUS: {
+            const stateCopy = {...state, status: action.status}
             return stateCopy
         }
         default: {
@@ -63,12 +69,39 @@ export const setUserProfileAC = (profile) => {
     }
     return action
 }
+export const setUserStatusAC = (status) => {
+    const action = {
+        type: SET_STATUS,
+        status: status
+    }
+    return action
+}
 
 export const getUserProfileTC = (userId) => {
     return (dispatch) => {
         profileAPI.getProfile(userId)
             .then((response) => {
                 dispatch(setUserProfileAC(response.data))
+            })
+    }
+}
+
+export const getUserStatusTC = (userId) => {
+    return (dispatch) => {
+        profileAPI.getStatus(userId)
+            .then((response) => {
+                dispatch(setUserStatusAC(response.data))
+            })
+    }
+}
+
+export const updateUserStatusTC = (status) => {
+    return (dispatch) => {
+        profileAPI.updateStatus(status)
+            .then((response) => {
+                if (response.data.resultCode === 0) {
+                    dispatch(setUserStatusAC(status))
+                }
             })
     }
 }
