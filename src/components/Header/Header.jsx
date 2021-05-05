@@ -9,6 +9,9 @@ const Header = (props) => {
             <div className={s.container}>
                 <img className={s.logo} src={logo} alt=''/>
                 <div className={s.loginBlock}>
+                    <div className={s.navItem}>
+                        <NavLink className={s.navLink} to='/login' activeClassName={s.active}>Login</NavLink>
+                    </div>
                     {
                         props.isAuth
                             ? props.login

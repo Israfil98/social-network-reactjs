@@ -14,6 +14,9 @@
     height: 80px;
 }
 .loginBlock {
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
     margin-right: 20px;
     text-transform: uppercase;
     color: #000;
@@ -23,4 +26,17 @@
 }
 .loginBlock a:hover {
     color: #fff;
+}
+
+.navItem {
+    margin-bottom: 50px;
+}
+
+.navLink {
+    text-decoration: none;
+    color: #000;
+}
+
+.navLink:last-child {
+    margin-bottom: 0;
 }
