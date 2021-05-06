@@ -1,5 +1,4 @@
 const SEND_MESSAGE = "SEND_MESSAGE"
-const UPDATE_NEW_MESSAGE_BODY_TEXT = "UPDATE_NEW_MESSAGE_BODY_TEXT"
 
 const initialState = {
     dialogsData: [
@@ -12,7 +11,6 @@ const initialState = {
         {id: 2, messageBody: "React is a nice Library"},
         {id: 3, messageBody: "Method map is improves performance"}
     ],
-    newMessageBodyText: ""
 }
 
 export const dialogsReducer = (state = initialState, action) => {
@@ -20,16 +18,9 @@ export const dialogsReducer = (state = initialState, action) => {
         case SEND_MESSAGE: {
             const newMessage = {
                 id: 4,
-                messageBody: state.newMessageBodyText
+                messageBody: action.newMessageBodyTextValue
             }
-            const stateCopy = {...state, messagesData: [...state.messagesData]}
-            stateCopy.messagesData.push(newMessage)
-            stateCopy.newMessageBodyText = ""
-            return stateCopy
-        }
-        case UPDATE_NEW_MESSAGE_BODY_TEXT: {
-            const stateCopy = {...state}
-            stateCopy.newMessageBodyText = action.newMessageBodyText
+            const stateCopy = {...state, messagesData: [...state.messagesData, newMessage]}
             return stateCopy
         }
         default: {
@@ -38,16 +29,10 @@ export const dialogsReducer = (state = initialState, action) => {
     }
 }
 
-export const sendMessageAC = () => {
+export const sendMessageAC = (newMessageBodyTextValue) => {
     const action = {
-        type: SEND_MESSAGE
-    }
-    return action
-}
-export const updateNewMessageBodyTextAC = (newMessageBodyText) => {
-    const action = {
-        type: UPDATE_NEW_MESSAGE_BODY_TEXT,
-        newMessageBodyText: newMessageBodyText
+        type: SEND_MESSAGE,
+        newMessageBodyTextValue: newMessageBodyTextValue
     }
     return action
 }

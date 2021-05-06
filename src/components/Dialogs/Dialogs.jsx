@@ -4,19 +4,14 @@ import s from './Dialogs.module.css'
 
 import Message from './Message/Message';
 import DialogItem from './DialogItem/DialogItem';
+import { SendMessageReduxForm } from "./SendMessageForm/SendMessageForm";
 
 const Dialogs = (props) => {
     const dialogs = props.dialogsData.map(d => <DialogItem id={ d.id } name={ d.name } key={ d.id }/>)
     const messages = props.messagesData.map(m => <Message messageBody={ m.messageBody } key={ m.id }/>)
-    const newMessageBodyTextValue = props.newMessageBodyText
 
-    const sendMessageClickHandler = () => {
-        props.sendMessage()
-    }
-
-    const onMessageBodyTextChangeHandler = (event) => {
-        const newMessageBodyTextValue = event.currentTarget.value
-        props.messageBodyTextChange(newMessageBodyTextValue)
+    const sendMessage = (formData) => {
+        props.sendMessage(formData.newMessageBodyTextValue)
     }
 
     return (
@@ -28,13 +23,7 @@ const Dialogs = (props) => {
                 <div className={ s.messages }>
                     { messages }
                 </div>
-                <div className={ s.sendMessageContainer }>
-                    <textarea className={ s.textarea }
-                              placeholder='Start a new message'
-                              value={ newMessageBodyTextValue }
-                              onChange={ onMessageBodyTextChangeHandler }/>
-                    <button className={ s.sendMessageBtn } onClick={ sendMessageClickHandler }>Send</button>
-                </div>
+                <SendMessageReduxForm onSubmit={ sendMessage }/>
             </div>
         </div>
     );
