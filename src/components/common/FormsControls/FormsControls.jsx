@@ -1,0 +1,24 @@
+import React from 'react';
+import style from './FormsControls.module.css';
+
+export const Textarea = ({input, meta, ...props}) => {
+    return (
+        <div className={ style.formControl + ' ' + (meta.touched && meta.error ? style.error : '') }>
+            <div>
+                <textarea { ...input } { ...props }/>
+            </div>
+            { meta.touched && meta.error && <span>{ meta.error }</span> }
+        </div>
+    );
+};
+
+export const Input = ({input, meta, ...props}) => {
+    return (
+        <div className={ style.formControl + ' ' + (meta.touched && meta.error ? style.error : '') }>
+            <div>
+                <input { ...input } { ...props }/>
+            </div>
+            { meta.touched && meta.error && <span>{ meta.error }</span> }
+        </div>
+    );
+};
