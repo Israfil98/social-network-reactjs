@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { getAuthUserDataTC, logoutTC } from '../../BLL/redux/authReducer'
+import { logoutTC } from '../../BLL/redux/authReducer'
 
 import HeaderAPIContainer from './HeaderAPIContainer'
 
@@ -13,9 +13,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getAuthUserData: () => {
-            dispatch(getAuthUserDataTC())
-        },
         logout: () => {
             dispatch(logoutTC())
         },

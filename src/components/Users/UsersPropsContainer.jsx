@@ -33,5 +33,4 @@ const mapDispatchToProps = (dispatch) => {
 
 export const UsersPropsContainer = compose(
     connect(mapStateToProps, mapDispatchToProps),
-    withAuthRedirect
 )(UsersAPIContainer)
