@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-import Profile from './Profile';
+import Profile from './Profile'
 
 class ProfileAPIContainer extends React.Component {
     componentDidMount() {
         let userId = this.props.match.params.userId
 
         if (!userId) {
-            userId = 13765
+            userId = this.props.authorizedUserId
         }
 
         this.props.getUserProfile(userId)
@@ -16,13 +16,14 @@ class ProfileAPIContainer extends React.Component {
 
     render() {
         return (
-            <Profile { ...this.props }
-                     profile={ this.props.profile }
-                     status={ this.props.status }
-                     updateUserStatus={ this.props.updateUserStatus }
+            <Profile
+                {...this.props}
+                profile={this.props.profile}
+                status={this.props.status}
+                updateUserStatus={this.props.updateUserStatus}
             />
-        );
+        )
     }
 }
 
-export default ProfileAPIContainer;
+export default ProfileAPIContainer

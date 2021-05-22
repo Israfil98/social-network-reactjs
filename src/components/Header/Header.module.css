@@ -2,6 +2,7 @@
     background-color: #1880d2;
     grid-area: h;
     color: white;
+    box-shadow: 0 0.1rem 0.3rem rgba(0, 0, 0, 0.5);
 }
 .container {
     display: flex;
