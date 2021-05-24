@@ -28,7 +28,7 @@ const Users = (props) => {
                     </div>
                     <div>
                         {
-                            user.isFollowed ?
+                            user.followed ?
                                 <button disabled={ props.isFollowingProgress.some(id => id === user.id) }
                                         className={ s.btn }
                                         onClick={ () => {

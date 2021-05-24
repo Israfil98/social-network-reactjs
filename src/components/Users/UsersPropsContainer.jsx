@@ -3,7 +3,6 @@ import { compose } from "redux";
 
 import UsersAPIContainer from './UsersAPIContainer';
 import { followTC, getUsersTC, unfollowTC } from '../../BLL/redux/usersReducer';
-import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 
 const mapStateToProps = (state) => {
     return {

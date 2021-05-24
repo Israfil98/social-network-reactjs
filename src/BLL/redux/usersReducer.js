@@ -25,7 +25,7 @@ export const usersReducer = (state = initialState, action) => {
                 ...state,
                 usersData: state.usersData.map((user) => {
                     if (user.id === action.userId) {
-                        const userCopy = {...user, isFollowed: true}
+                        const userCopy = {...user, followed: true}
                         return userCopy
                     }
                     return user
@@ -38,7 +38,7 @@ export const usersReducer = (state = initialState, action) => {
                 ...state,
                 usersData: state.usersData.map((user) => {
                     if (user.id === action.userId) {
-                        const userCopy = {...user, isFollowed: false}
+                        const userCopy = {...user, followed: false}
                         return userCopy
                     }
                     return user
@@ -146,7 +146,8 @@ export const followTC = (userId) => {
         dispatch(setFollowingProgressAC(true, userId))
         usersAPI.follow(userId)
             .then((response) => {
-                if (response.data.resultCode === 0) {
+                debugger
+                if (response.data.resultCode == 0) {
                     dispatch(followAC(userId))
                 }
                 dispatch(setFollowingProgressAC(false, userId))
@@ -159,7 +160,8 @@ export const unfollowTC = (userId) => {
         dispatch(setFollowingProgressAC(true, userId))
         usersAPI.unfollow(userId)
             .then((response) => {
-                if (response.data.resultCode === 0) {
+                debugger
+                if (response.data.resultCode == 0) {
                     dispatch(unfollowAC(userId))
                 }
                 dispatch(setFollowingProgressAC(false, userId))
