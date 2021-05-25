@@ -3,15 +3,33 @@ import { compose } from "redux";
 
 import UsersAPIContainer from './UsersAPIContainer';
 import { followTC, getUsersTC, unfollowTC } from '../../BLL/redux/usersReducer';
+import {
+    getCurrentPage,
+    getIsFetching, getIsFollowingProgress,
+    getPageSize,
+    getTotalUsersCount,
+    getUsersData
+} from "../../BLL/redux/usersSelectors";
+
+// const mapStateToProps = (state) => {
+//     return {
+//         currentPage: state.usersPage.currentPage,
+//         pageSize: state.usersPage.pageSize,
+//         totalUsersCount: state.usersPage.totalUsersCount,
+//         usersData: state.usersPage.usersData,
+//         isFetching: state.usersPage.isFetching,
+//         isFollowingProgress: state.usersPage.isFollowingProgress,
+//     }
+// }
 
 const mapStateToProps = (state) => {
     return {
-        currentPage: state.usersPage.currentPage,
-        pageSize: state.usersPage.pageSize,
-        totalUsersCount: state.usersPage.totalUsersCount,
-        usersData: state.usersPage.usersData,
-        isFetching: state.usersPage.isFetching,
-        isFollowingProgress: state.usersPage.isFollowingProgress,
+        currentPage: getCurrentPage(state),
+        pageSize: getPageSize(state),
+        totalUsersCount: getTotalUsersCount(state),
+        usersData: getUsersData(state),
+        isFetching: getIsFetching(state),
+        isFollowingProgress: getIsFollowingProgress(state),
     }
 }
 
