@@ -8,7 +8,7 @@ import {
     getIsFetching, getIsFollowingProgress,
     getPageSize,
     getTotalUsersCount,
-    getUsersData
+    getUsersSelector
 } from "../../BLL/redux/usersSelectors";
 
 // const mapStateToProps = (state) => {
@@ -27,7 +27,7 @@ const mapStateToProps = (state) => {
         currentPage: getCurrentPage(state),
         pageSize: getPageSize(state),
         totalUsersCount: getTotalUsersCount(state),
-        usersData: getUsersData(state),
+        usersData: getUsersSelector(state),
         isFetching: getIsFetching(state),
         isFollowingProgress: getIsFollowingProgress(state),
     }
