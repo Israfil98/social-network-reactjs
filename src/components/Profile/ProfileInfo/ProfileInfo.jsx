@@ -2,7 +2,7 @@ import React from 'react';
 import { CircularProgress } from "@material-ui/core";
 
 import s from './ProfileInfo.module.css'
-import ProfileStatus from "../ProfileStatus/ProfileStatus";
+import ProfileStatusWithHooks from "../ProfileStatus/ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -15,7 +15,7 @@ const ProfileInfo = (props) => {
                     <div className={ s.fullName }>
                         { props.profile.fullName }
                     </div>
-                    <ProfileStatus
+                    <ProfileStatusWithHooks
                         status={ props.status }
                         updateUserStatus={ props.updateUserStatus }
                     />
