@@ -6,7 +6,7 @@ import Message from './Message/Message';
 import DialogItem from './DialogItem/DialogItem';
 import { SendMessageReduxForm } from "./SendMessageForm/SendMessageForm";
 
-const Dialogs = (props) => {
+const Dialogs = React.memo((props) => {
     const dialogs = props.dialogsData.map(d => <DialogItem id={ d.id } name={ d.name } key={ d.id }/>)
     const messages = props.messagesData.map(m => <Message messageBody={ m.messageBody } key={ m.id }/>)
 
@@ -27,6 +27,6 @@ const Dialogs = (props) => {
             </div>
         </div>
     );
-};
+});
 
 export default Dialogs;

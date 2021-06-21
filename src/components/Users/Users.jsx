@@ -5,7 +5,7 @@ import s from "./Users.module.css";
 
 import userPhoto from "../../assets/img/user.png";
 
-const Users = (props) => {
+const Users = React.memo((props) => {
     const users = props.usersData.map((user) => {
         return (
             <div className={ s.users }>
@@ -72,6 +72,6 @@ const Users = (props) => {
             <div>{ users }</div>
         </div>
     );
-};
+});
 
 export default Users;

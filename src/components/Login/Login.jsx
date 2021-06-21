@@ -6,7 +6,7 @@ import { LoginReduxForm } from './LoginForm/LoginForm'
 import { loginTC, logoutTC } from '../../BLL/redux/authReducer'
 import { Redirect } from 'react-router'
 
-const Login = (props) => {
+const Login = React.memo((props) => {
     const onSubmit = (formData) => {
         props.login(formData.email, formData.password, formData.rememberMe)
     }
@@ -21,7 +21,7 @@ const Login = (props) => {
             <LoginReduxForm onSubmit={onSubmit} />
         </div>
     )
-}
+})
 
 const mapStateToProps = (state) => {
     return {

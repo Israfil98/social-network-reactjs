@@ -3,7 +3,7 @@ import logo from '../../assets/img/atom.svg'
 import s from './Header.module.css'
 import { NavLink } from 'react-router-dom'
 
-const Header = (props) => {
+const Header = React.memo((props) => {
     return (
         <header className={s.header}>
             <div className={s.container}>
@@ -23,6 +23,6 @@ const Header = (props) => {
             </div>
         </header>
     )
-}
+})
 
 export default Header

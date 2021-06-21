@@ -4,7 +4,7 @@ import { CircularProgress } from "@material-ui/core";
 import s from './ProfileInfo.module.css'
 import ProfileStatusWithHooks from "../ProfileStatus/ProfileStatusWithHooks";
 
-const ProfileInfo = (props) => {
+const ProfileInfo = React.memo((props) => {
     if (!props.profile) {
         return <CircularProgress/>
     }
@@ -23,6 +23,6 @@ const ProfileInfo = (props) => {
             </div>
         </div>
     );
-};
+});
 
 export default ProfileInfo;
