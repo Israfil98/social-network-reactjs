@@ -10,6 +10,8 @@ const MyPosts = React.memo((props) => {
     const posts = props.postsData.map(p => <Post postMessage={ p.postText }
                                                  likesCount={ p.likesCount }
                                                  key={ p.id }
+                                                 postId={p.id}
+                                                 deletePost={ props.deletePost }
     />)
 
     const addPost = (formData) => {
