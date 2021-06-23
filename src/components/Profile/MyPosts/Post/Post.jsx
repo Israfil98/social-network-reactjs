@@ -7,6 +7,9 @@ const Post = (props) => {
     const deletePostHandle = () => {
         props.deletePost(props.postId)
     }
+    const likePostHandle = () => {
+        props.likePost(props.likesCount, props.postId)
+    }
 
     return (
         <div className={ s.postWrapper }>
@@ -21,7 +24,7 @@ const Post = (props) => {
                 </div>
             </div>
             <div className={ s.btnWrapper }>
-                <button className={ s.likeBtn }>Like</button>
+                <button className={ s.likeBtn } onClick={ likePostHandle }>Like</button>
                 { props.likesCount }
             </div>
         </div>

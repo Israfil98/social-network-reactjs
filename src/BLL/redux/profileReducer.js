@@ -4,6 +4,7 @@ const ADD_POST = "ADD_POST"
 const SET_USER_PROFILE = "SET_USER_PROFILE"
 const SET_STATUS = "SET_STATUS"
 const DELETE_POST = "DELETE_POST"
+const SET_LIKE = "SET_LIKE"
 
 const initialState = {
     postsData: [
@@ -41,6 +42,22 @@ export const profileReducer = (state = initialState, action) => {
             const stateCopy = {...state, status: action.status}
             return stateCopy
         }
+        case SET_LIKE: {
+            return {
+                ...state,
+                postsData: state.postsData
+                    .map((data) => data.id === action.postId
+                        ? {...data, likesCount: action.newLike + 1}
+                        : data)
+            }
+            // const newPost = {
+            //     id: 4,
+            //     postText: action.newPostTextValue,
+            //     likesCount: action.newLike
+            // }
+                //return {...state, postsData[action.postId]: { ...state.postsData[action.postId],  } }
+
+        }
         default: {
             return state
         }
@@ -59,6 +76,15 @@ export const deletePostAC = (postId) => {
     const action = {
         type: DELETE_POST,
         postId: postId
+    }
+    return action
+}
+
+export const setLikeAC = (newLike, postId) => {
+    const action = {
+        type: SET_LIKE,
+        newLike,
+        postId
     }
     return action
 }

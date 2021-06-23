@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import MyPosts from './MyPosts';
-import { addPostAC, deletePostAC } from '../../../BLL/redux/profileReducer';
+import { addPostAC, deletePostAC, setLikeAC } from '../../../BLL/redux/profileReducer';
 
 const mapStateToProps = (state) => {
     return {
@@ -17,6 +17,10 @@ const mapDispatchToProps = (dispatch) => {
         deletePost: (postId) => {
             dispatch(deletePostAC(postId))
         },
+        likePost: (newLike, id) => {
+            dispatch(setLikeAC(newLike, id))
+        },
+
     }
 }
 

@@ -12,6 +12,7 @@ const MyPosts = React.memo((props) => {
                                                  key={ p.id }
                                                  postId={p.id}
                                                  deletePost={ props.deletePost }
+                                                 likePost={ props.likePost }
     />)
 
     const addPost = (formData) => {
