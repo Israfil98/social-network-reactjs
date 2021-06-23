@@ -3,6 +3,7 @@ import { profileAPI } from "../../DAL/axios/api";
 const ADD_POST = "ADD_POST"
 const SET_USER_PROFILE = "SET_USER_PROFILE"
 const SET_STATUS = "SET_STATUS"
+const DELETE_POST = "DELETE_POST"
 
 const initialState = {
     postsData: [
@@ -27,6 +28,11 @@ export const profileReducer = (state = initialState, action) => {
             stateCopy.postsData = [newPost, ...stateCopy.postsData]
             return stateCopy
         }
+        case DELETE_POST: {
+            return {
+                ...state, postsData: state.postsData.filter(p => p.id !== action.postId)
+            }
+        }
         case SET_USER_PROFILE: {
             const stateCopy = {...state, profile: action.profile}
             return stateCopy
@@ -49,6 +55,14 @@ export const addPostAC = (newPostTextValue) => {
     return action
 }
 
+export const deletePostAC = (postId) => {
+    const action = {
+        type: DELETE_POST,
+        postId: postId
+    }
+    return action
+}
+
 export const setUserProfileAC = (profile) => {
     const action = {
         type: SET_USER_PROFILE,
@@ -56,6 +70,7 @@ export const setUserProfileAC = (profile) => {
     }
     return action
 }
+
 export const setUserStatusAC = (status) => {
     const action = {
         type: SET_STATUS,
