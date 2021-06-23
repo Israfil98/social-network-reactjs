@@ -17,6 +17,7 @@ test('new post should be added', () => {
     expect(newState.postsData.length).toBe(4)
     expect(newState.postsData[0].postText).toBe('new post text')
 })
+
 test('correct post should be deleted', () => {
     const action = deletePostAC(3)
 

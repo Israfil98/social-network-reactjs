@@ -45,3 +45,15 @@
 .likeBtn:active {
     background-color: rgba(31, 145, 236, 0.5);
 }
+
+.deleteBtn {
+    text-align: center;
+    color: black;
+    background-color: #6c9dba;
+    margin: 0 5px;
+    padding: 10px;
+}
+
+.deleteBtn:active {
+    background-color: rgba(112, 169, 207, 0.5);
+}

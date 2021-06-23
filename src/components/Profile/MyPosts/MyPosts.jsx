@@ -7,7 +7,10 @@ import { AddPostReduxForm } from "./AddPostForm/AddPostForm";
 
 const MyPosts = React.memo((props) => {
     console.log('MyPosts')
-    const posts = props.postsData.map(p => <Post postMessage={ p.postText } likesCount={ p.likesCount } key={ p.id } />)
+    const posts = props.postsData.map(p => <Post postMessage={ p.postText }
+                                                 likesCount={ p.likesCount }
+                                                 key={ p.id }
+    />)
 
     const addPost = (formData) => {
         props.addNewPost(formData.newPostTextValue)
