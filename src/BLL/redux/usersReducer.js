@@ -1,12 +1,12 @@
 import { usersAPI } from "../../DAL/axios/api";
 
-const FOLLOW = "FOLLOW"
-const UNFOLLOW = "UNFOLLOW"
-const SET_CURRENT_PAGE = "SET_CURRENT_PAGE"
-const SET_TOTAL_USERS_COUNT = "SET_TOTAL_USERS_COUNT"
-const SET_USERS = "SET_USERS"
-const SET_FETCHING = "SET_FETCHING"
-const SET_FOLLOWING_PROGRESS = "SET_FOLLOWING_PROGRESS"
+const FOLLOW = "users/FOLLOW"
+const UNFOLLOW = "users/UNFOLLOW"
+const SET_CURRENT_PAGE = "users/SET_CURRENT_PAGE"
+const SET_TOTAL_USERS_COUNT = "users/SET_TOTAL_USERS_COUNT"
+const SET_USERS = "users/SET_USERS"
+const SET_FETCHING = "users/SET_FETCHING"
+const SET_FOLLOWING_PROGRESS = "users/SET_FOLLOWING_PROGRESS"
 
 const initialState = {
     currentPage: 1,
@@ -129,42 +129,34 @@ export const setFollowingProgressAC = (isFollowing, userId) => {
 }
 
 export const getUsersTC = (currentPage, pageSize) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setFetchingAC(true))
         dispatch(setCurrentPageAC(currentPage))
-        usersAPI.getUsers(currentPage, pageSize)
-            .then(data => {
-                dispatch(setFetchingAC(false))
-                dispatch(setUsersAC(data.items))
-                dispatch(setTotalUsersCountAC(data.totalCount))
-            })
+        const response = await usersAPI.getUsers(currentPage, pageSize)
+        dispatch(setFetchingAC(false))
+        dispatch(setUsersAC(response.items))
+        dispatch(setTotalUsersCountAC(response.totalCount))
     }
 }
 
 export const followTC = (userId) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setFollowingProgressAC(true, userId))
-        usersAPI.follow(userId)
-            .then((response) => {
-                debugger
-                if (response.data.resultCode == 0) {
-                    dispatch(followAC(userId))
-                }
-                dispatch(setFollowingProgressAC(false, userId))
-            })
+        const response = await usersAPI.follow(userId)
+        if (response.data.resultCode == 0) {
+            dispatch(followAC(userId))
+        }
+        dispatch(setFollowingProgressAC(false, userId))
     }
 }
 
 export const unfollowTC = (userId) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(setFollowingProgressAC(true, userId))
-        usersAPI.unfollow(userId)
-            .then((response) => {
-                debugger
-                if (response.data.resultCode == 0) {
-                    dispatch(unfollowAC(userId))
-                }
-                dispatch(setFollowingProgressAC(false, userId))
-            })
+        const response = await usersAPI.unfollow(userId)
+        if (response.data.resultCode == 0) {
+            dispatch(unfollowAC(userId))
+        }
+        dispatch(setFollowingProgressAC(false, userId))
     }
 }

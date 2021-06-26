@@ -1,7 +1,7 @@
 import { authAPI } from '../../DAL/axios/api'
 import { stopSubmit } from 'redux-form'
 
-const SET_USER_DATA = 'SET_USER_DATA'
+const SET_USER_DATA = 'auth/SET_USER_DATA'
 
 const initialState = {
     userId: null,
@@ -34,35 +34,32 @@ export const setUserDataAC = (userId, login, email, isAuth) => {
 }
 
 export const getAuthUserDataTC = () => {
-    return (dispatch) => {
-        return authAPI.getMe().then((response) => {
-            if (response.data.resultCode === 0) {
-                const {email, id, login} = response.data.data
-                dispatch(setUserDataAC(id, login, email, true))
-            }
-        })
+    return async (dispatch) => {
+        const response = await authAPI.getMe()
+        if (response.data.resultCode === 0) {
+            const {email, id, login} = response.data.data
+            dispatch(setUserDataAC(id, login, email, true))
+        }
     }
 }
 
 export const loginTC = (email, password, rememberMe) => {
-    return (dispatch) => {
-        authAPI.login(email, password, rememberMe).then((response) => {
-            if (response.data.resultCode === 0) {
-                dispatch(getAuthUserDataTC())
-            } else {
-                const message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error'
-                dispatch(stopSubmit('login', {_error: message}))
-            }
-        })
+    return async (dispatch) => {
+        const response = await authAPI.login(email, password, rememberMe)
+        if (response.data.resultCode === 0) {
+            dispatch(getAuthUserDataTC())
+        } else {
+            const message = response.data.messages.length > 0 ? response.data.messages[0] : 'Some error'
+            dispatch(stopSubmit('login', {_error: message}))
+        }
     }
 }
 
 export const logoutTC = () => {
-    return (dispatch) => {
-        authAPI.logout().then((response) => {
-            if (response.data.resultCode === 0) {
-                dispatch(setUserDataAC(null, null, null, false))
-            }
-        })
+    return async (dispatch) => {
+        const response = await authAPI.logout()
+        if (response.data.resultCode === 0) {
+            dispatch(setUserDataAC(null, null, null, false))
+        }
     }
 }
