@@ -27,12 +27,20 @@ const Users = React.memo((props) => {
     return (
         <div className={ s.container }>
             <Paginator
-                totalUsersCount={ props.totalUsersCount }
+                totalItemsCount={ props.totalUsersCount }
                 pageSize={ props.pageSize }
                 currentPage={ props.currentPage }
                 onPageChangeHandler={ props.onPageChangeHandler }
+                portionSize={ props.portionSize }
             />
             <div>{ users }</div>
+            <Paginator
+                totalItemsCount={ props.totalUsersCount }
+                pageSize={ props.pageSize }
+                currentPage={ props.currentPage }
+                onPageChangeHandler={ props.onPageChangeHandler }
+                portionSize={ props.portionSize }
+            />
         </div>
     );
 });

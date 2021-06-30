@@ -20,6 +20,10 @@ export const getTotalUsersCount = (state) => {
     return state.usersPage.totalUsersCount
 }
 
+export const getPortionSize = (state) => {
+    return state.usersPage.portionSize
+}
+
 export const getIsFetching = (state) => {
     return state.usersPage.isFetching
 }

@@ -1,74 +1,8 @@
 .container {
-    /*display: flex;*/
-    /*flex-direction: column;*/
-}
-
-.pagination {
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    align-items: center;
-    margin: 10px 0;
-}
-
-.selectedPage {
-    font-weight: bold;
+    display: flex;
+    flex-direction: column;
 }
 
 .users {
     padding: 10px;
-}
-
-.userItem {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid rgba(0, 0, 0, .1);
-}
-
-.userAbout {
-    display: flex;
-    margin-bottom: 10px;
-}
-
-.userPhoto {
-
-}
-
-.description {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    padding-left: 10px;
-}
-
-.userName {
-    font-weight: bold;
-}
-
-.status {
-    opacity: .5;
-}
-
-.location {
-    opacity: .5;
-}
-.location span {
-    margin-right: 5px;
-}
-.location span:last-child {
-    margin: 0;
-}
-
-.btn {
-    display: block;
-    width: 100px;
-    height: 50px;
-    text-align: center;
-    padding: 5px;
-    color: black;
-    background-color: #1f91ec;
-}
-.btn:active {
-    background-color: rgba(31, 145, 236, 0.5);
 }

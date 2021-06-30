@@ -6,7 +6,7 @@ import { followTC, getUsersTC, unfollowTC } from '../../BLL/redux/usersReducer';
 import {
     getCurrentPage,
     getIsFetching, getIsFollowingProgress,
-    getPageSize,
+    getPageSize, getPortionSize,
     getTotalUsersCount,
     getUsersSelector
 } from "../../BLL/redux/usersSelectors";
@@ -27,6 +27,7 @@ const mapStateToProps = (state) => {
         currentPage: getCurrentPage(state),
         pageSize: getPageSize(state),
         totalUsersCount: getTotalUsersCount(state),
+        portionSize: getPortionSize(state),
         usersData: getUsersSelector(state),
         isFetching: getIsFetching(state),
         isFollowingProgress: getIsFollowingProgress(state),

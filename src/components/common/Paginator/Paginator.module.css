@@ -1,15 +1,48 @@
-.container {
-    /*display: flex;*/
-    /*flex-direction: column;*/
+.paginationContainer {
+    display: flex;
+    justify-content: center;
 }
 
 .pagination {
-    /*display: flex;*/
-    /*flex-direction: column;*/
+    display: flex;
     align-items: center;
     margin: 10px 0;
 }
 
+.page {
+    border: 1px solid black;
+    padding: 5px;
+    margin-right: 2px;
+    cursor: pointer;
+}
+.page:last-child {
+    margin-right: 0;
+}
+
+.page:hover {
+    background-color: rgba(31, 145, 236, 0.5);
+    transition: all ease-in .2s;
+    margin-bottom: 5px;
+}
+
 .selectedPage {
-    font-weight: bold;
+    border: 1px solid black;
+    padding: 5px;
+    margin-right: 2px;
+    color: #fff;
+    background-color: #3c88e9;
+}
+
+.btn {
+    display: block;
+    width: 50px;
+    padding: 10px;
+    text-align: center;
+    color: black;
+    background-color: #1f91ec;
+    margin: 0 5px;
+}
+
+.btn:active {
+    background-color: rgba(31, 145, 236, 0.5);
 }

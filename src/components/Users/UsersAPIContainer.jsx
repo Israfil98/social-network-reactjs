@@ -20,6 +20,7 @@ class UsersAPIContainer extends React.Component {
                     currentPage={ this.props.currentPage }
                     pageSize={ this.props.pageSize }
                     totalUsersCount={ this.props.totalUsersCount }
+                    portionSize={ this.props.portionSize }
                     usersData={ this.props.usersData }
                     isFollowingProgress={ this.props.isFollowingProgress }
 
