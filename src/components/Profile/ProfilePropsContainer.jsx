@@ -28,8 +28,11 @@ const mapDispatchToProps = (dispatch) => {
         },
     }
 }
-export const ProfilePropsContainer = compose(
+
+const ProfilePropsContainer = compose(
     connect(mapStateToProps, mapDispatchToProps),
     withRouter,
     withAuthRedirect
 )(ProfileAPIContainer)
+
+export default ProfilePropsContainer;

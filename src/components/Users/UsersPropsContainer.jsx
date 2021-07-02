@@ -49,6 +49,8 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export const UsersPropsContainer = compose(
+const UsersPropsContainer = compose(
     connect(mapStateToProps, mapDispatchToProps),
 )(UsersAPIContainer)
+
+export default UsersPropsContainer;
