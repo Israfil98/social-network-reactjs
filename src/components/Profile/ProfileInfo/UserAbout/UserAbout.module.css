@@ -1,0 +1,30 @@
+.userAboutContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.userDescriptionContainer {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.userPhoto {
+    max-width: 150px;
+}
+.choosePhoto {
+    opacity: 0.5;
+}
+.fullName {
+    display: flex;
+}
+
+.lookingForAJob {
+    display: flex;
+}
+
+.contacts {
+    display: flex;
+}

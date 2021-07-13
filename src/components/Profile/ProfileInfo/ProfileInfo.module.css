@@ -9,35 +9,8 @@
     object-fit: cover;
 }
 
-.main__img {
-
-}
-
-.descriptionBlock {
-
-}
-
-.userPhoto {
-    max-width: 150px;
-}
-
-.aboutUser {
+.aboutUserContainer {
     display: flex;
     align-items: center;
-    justify-content: space-around;
-}
-
-.fullName {
-    display: flex;
-}
-
-.about {
-
-}
-
-.contacts {
-
-}
-
-.selectUserPhoto {
+    justify-content: space-evenly;
 }
