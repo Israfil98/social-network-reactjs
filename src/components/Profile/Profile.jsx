@@ -6,9 +6,12 @@ import MyPostsContainer from './MyPosts/MyPostsContainer';
 const Profile = React.memo((props) => {
     return (
         <div>
-            <ProfileInfo profile={ props.profile }
-                         status={ props.status }
-                         updateUserStatus={ props.updateUserStatus }
+            <ProfileInfo
+                saveFile={ props.saveFile }
+                isOwner={ props.isOwner }
+                profile={ props.profile }
+                status={ props.status }
+                updateUserStatus={ props.updateUserStatus }
             />
             <MyPostsContainer/>
         </div>

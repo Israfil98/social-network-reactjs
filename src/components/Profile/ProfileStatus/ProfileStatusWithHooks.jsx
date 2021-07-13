@@ -25,6 +25,7 @@ const ProfileStatus = React.memo((props) => {
 
     return (
         <div className={ style.container }>
+            <div style={{ opacity:'0.5' }}>status:</div>
             {
                 editMode
                     ? <input

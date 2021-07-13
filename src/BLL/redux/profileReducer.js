@@ -5,6 +5,7 @@ const SET_USER_PROFILE = "profile/SET_USER_PROFILE"
 const SET_STATUS = "profile/SET_STATUS"
 const DELETE_POST = "profile/DELETE_POST"
 const SET_LIKE = "profile/SET_LIKE"
+const SET_FILE = "profile/SET_FILE"
 
 const initialState = {
     postsData: [
@@ -50,13 +51,12 @@ export const profileReducer = (state = initialState, action) => {
                         ? {...data, likesCount: action.newLike + 1}
                         : data)
             }
-            // const newPost = {
-            //     id: 4,
-            //     postText: action.newPostTextValue,
-            //     likesCount: action.newLike
-            // }
-            //return {...state, postsData[action.postId]: { ...state.postsData[action.postId],  } }
-
+        }
+        case SET_FILE: {
+            return {
+                ...state,
+                profile: {...state.profile, photos: action.photos}
+            }
         }
         default: {
             return state
@@ -105,6 +105,15 @@ export const setUserStatusAC = (status) => {
     return action
 }
 
+export const saveFileAC = (photos) => {
+    const action = {
+        type: SET_FILE,
+        photos
+    }
+    return action
+}
+
+//thunks
 export const getUserProfileTC = (userId) => {
     return async (dispatch) => {
         const response = await profileAPI.getProfile(userId)
@@ -124,6 +133,15 @@ export const updateUserStatusTC = (status) => {
         const response = await profileAPI.updateStatus(status)
         if (response.data.resultCode === 0) {
             dispatch(setUserStatusAC(status))
+        }
+    }
+}
+
+export const saveFileTC = (file) => {
+    return async (dispatch) => {
+        const response = await profileAPI.saveFile(file)
+        if (response.data.resultCode === 0) {
+            dispatch(saveFileAC(response.data.data.photos))
         }
     }
 }

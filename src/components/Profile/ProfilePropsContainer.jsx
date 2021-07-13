@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { compose } from 'redux'
 
-import { getUserProfileTC, getUserStatusTC, updateUserStatusTC } from '../../BLL/redux/profileReducer'
+import { getUserProfileTC, getUserStatusTC, saveFileTC, updateUserStatusTC } from '../../BLL/redux/profileReducer'
 import ProfileAPIContainer from './ProfileAPIContainer'
 import { withAuthRedirect } from '../../hoc/withAuthRedirect'
 
@@ -25,6 +25,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         updateUserStatus: (status) => {
             dispatch(updateUserStatusTC(status))
+        },
+        saveFile: (file) => {
+            dispatch(saveFileTC(file))
         },
     }
 }
