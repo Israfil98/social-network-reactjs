@@ -2,10 +2,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding-top: 10px;
 }
 
-.userDescriptionContainer {
-    height: 150px;
+.userDescriptionsContainer {
+    margin-left: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -17,14 +18,46 @@
 .choosePhoto {
     opacity: 0.5;
 }
-.fullName {
+.description {
     display: flex;
+    margin-bottom: 5px;
 }
-
-.lookingForAJob {
-    display: flex;
+.description:last-child {
+    margin-bottom: 0;
 }
 
 .contacts {
     display: flex;
+}
+
+.contactsList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.contactItem {
+    margin-bottom: 5px;
+    padding-left: 10px;
+}
+.contactItem:last-child {
+    margin-bottom: 0;
+}
+
+.itemLink {
+    color: #000;
+}
+
+.itemLink:hover {
+    color: #1f91ec;
+}
+
+.btn {
+    margin-bottom: 10px;
+    max-width: 100px;
+    padding: 5px;
+}
+
+.btn:hover {
+    background-color: #e2dddd;
 }

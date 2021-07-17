@@ -8,6 +8,7 @@ const Profile = React.memo((props) => {
         <div>
             <ProfileInfo
                 saveFile={ props.saveFile }
+                saveProfile={ props.saveProfile }
                 isOwner={ props.isOwner }
                 profile={ props.profile }
                 status={ props.status }

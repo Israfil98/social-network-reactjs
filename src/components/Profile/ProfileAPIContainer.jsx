@@ -31,6 +31,7 @@ class ProfileAPIContainer extends React.Component {
             <Profile
                 { ...this.props }
                 saveFile={ this.props.saveFile }
+                saveProfile={ this.props.saveProfile }
                 isOwner={ !this.props.match.params.userId }
                 profile={ this.props.profile }
                 status={ this.props.status }

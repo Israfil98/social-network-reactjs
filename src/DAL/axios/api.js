@@ -23,6 +23,7 @@ export const usersAPI = {
         return instance.delete(`follow/${ userId }`)
     },
 }
+
 export const profileAPI = {
     getProfile(userId) {
         return instance.get(`profile/${ userId }`)
@@ -41,8 +42,12 @@ export const profileAPI = {
                 'Content-Type': 'multipart/form-data'
             }
         })
+    },
+    saveProfile(profile) {
+        return instance.put(`profile`, profile)
     }
 }
+
 export const authAPI = {
     getMe() {
         return instance.get(`auth/me`)

@@ -1,5 +1,6 @@
 .container {
     display: flex;
+    max-width: 300px;
 }
 
 .status{

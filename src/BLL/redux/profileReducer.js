@@ -145,3 +145,13 @@ export const saveFileTC = (file) => {
         }
     }
 }
+
+export const saveProfileTC = (profile) => {
+    return async (dispatch, getState) => {
+        const userId = getState().auth.userId
+        const response = await profileAPI.saveProfile(profile)
+        if (response.data.resultCode === 0) {
+            dispatch(getUserProfileTC(userId))
+        }
+    }
+}
