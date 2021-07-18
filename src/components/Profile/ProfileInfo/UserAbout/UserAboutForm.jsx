@@ -9,6 +9,7 @@ function UserAboutForm(props) {
         <div className={ s.userAboutContainer }>
             <form className={ s.userDescriptionsContainer } onSubmit={ props.handleSubmit }>
                 <button className={ s.btn }>save</button>
+                { props.error && <div className={ style.commonError }>{ props.error }</div> }
                 <div className={ s.description }>
                     <div style={ {opacity: '0.5', marginRight: '5px'} }>Full name:</div>
                     <Field component={ Input }

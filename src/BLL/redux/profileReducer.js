@@ -1,4 +1,5 @@
 import { profileAPI } from "../../DAL/axios/api";
+import { stopSubmit } from "redux-form";
 
 const ADD_POST = "profile/ADD_POST"
 const SET_USER_PROFILE = "profile/SET_USER_PROFILE"
@@ -152,6 +153,9 @@ export const saveProfileTC = (profile) => {
         const response = await profileAPI.saveProfile(profile)
         if (response.data.resultCode === 0) {
             dispatch(getUserProfileTC(userId))
+        } else {
+            dispatch(stopSubmit('edit-profile', {_error: response.data.messages[0]}))
+            return Promise.reject(response.data.messages[0])
         }
     }
 }

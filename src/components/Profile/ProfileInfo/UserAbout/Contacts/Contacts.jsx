@@ -7,8 +7,15 @@ export function Contacts(props) {
             <ul className={ s.contactsList }>
                 Contacts:
                 {
-                    Object.keys(props.profile.contacts).map((key) => {
-                        return <ContactItem key={key} contactType={ key } contactTypeText={ props.profile.contacts[key] }/>
+                    Object
+                        .keys(props.profile.contacts)
+                        .map((key) => {
+                        return (
+                            <ContactItem key={ key }
+                                         contactType={ key }
+                                         contactTypeText={ props.profile.contacts[key] }
+                            />
+                        )
                     })
                 }
             </ul>
@@ -20,7 +27,7 @@ function ContactItem(props) {
     return (
         <li className={ s.contactItem }>
             <span style={ {opacity: '0.5', marginRight: '5px'} }>{ props.contactType }:</span>
-            { props.contactTypeText }
+            <a href={ props.contactTypeText }>{ props.contactTypeText }</a>
         </li>
     )
 }

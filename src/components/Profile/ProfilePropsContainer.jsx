@@ -35,8 +35,8 @@ const mapDispatchToProps = (dispatch) => {
         saveFile: (file) => {
             dispatch(saveFileTC(file))
         },
-        saveProfile: (profile) => {
-            dispatch(saveProfileTC(profile))
+        saveProfile: async (profile) => {
+            await dispatch(saveProfileTC(profile))
         },
     }
 }

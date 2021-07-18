@@ -17,7 +17,9 @@ const ProfileInfo = React.memo((props) => {
 
     const onSubmit = (formData) => {
         props.saveProfile(formData)
-        setEditMode(false)
+            .then(() => {
+                setEditMode(false)
+            })
     }
 
     if (!props.profile) {
