@@ -26,14 +26,24 @@ const LoginForm = (props) => {
                 Remember me
             </div>
             { props.error && <div className={ style.commonError }>{ props.error }</div> }
+            { props.captchaURL && <img src={ props.captchaURL } alt="captcha"/> }
+            { props.captchaURL && <Field
+                component={ Input }
+                validate={ [required] }
+                name="captcha"
+                className={ style.input }
+                placeholder="Enter symbols"
+            /> }
             <button className={ style.btn }>Login</button>
         </form>
     )
 }
 
-export const LoginReduxForm = reduxForm({
-    // a unique name for the form
-    form: 'login',
-})(LoginForm)
+export const LoginReduxForm = reduxForm(
+    {
+        // a unique name for the form
+        form: 'login',
+    }
+)(LoginForm)
 
 export default LoginForm

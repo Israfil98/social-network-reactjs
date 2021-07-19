@@ -8,17 +8,17 @@ import { Redirect } from 'react-router'
 
 const Login = React.memo((props) => {
     const onSubmit = (formData) => {
-        props.login(formData.email, formData.password, formData.rememberMe)
+        props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
     }
 
     if (props.isAuth) {
-        return <Redirect to="/profile" />
+        return <Redirect to="/profile"/>
     }
 
     return (
-        <div className={style.container}>
-            <h1 className={style.title}>Login</h1>
-            <LoginReduxForm onSubmit={onSubmit} />
+        <div className={ style.container }>
+            <h1 className={ style.title }>Login</h1>
+            <LoginReduxForm onSubmit={ onSubmit } captchaURL={ props.captchaURL }/>
         </div>
     )
 })
@@ -26,13 +26,14 @@ const Login = React.memo((props) => {
 const mapStateToProps = (state) => {
     return {
         isAuth: state.auth.isAuth,
+        captchaURL: state.auth.captchaURL
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        login: (email, password, rememberMe) => {
-            dispatch(loginTC(email, password, rememberMe))
+        login: (email, password, rememberMe, captcha) => {
+            dispatch(loginTC(email, password, rememberMe, captcha))
         },
         logout: () => {
             dispatch(logoutTC())
